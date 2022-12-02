@@ -1,5 +1,3 @@
-{-# LANGUAGE BlockArguments #-}
-
 module Main where
 
 import Data.Function
@@ -31,25 +29,20 @@ summedStrings contents =
     & map ((sum . map read) . lines) ::
     [Int]
 
--- day2 :: String -> [[Char]]
+-- [13682,12881]
+day2 :: String -> [Int]
 day2 day2data = do
   let charLists = lines day2data & map (take 3)
   let part1 = map scoreLine charLists & sum
   let part2 = map findResponse charLists & scoreWithResponses charLists & sum
-  part2
+  [part1, part2]
 
--- scoreWithResponses :: [[Char]] -> [Char] -> b1
-scoreWithResponses charLists responses =
-  -- Zip the responses with the char lists
-  zip
-    charLists
-    responses
-    & map
-      ( \(charList, response) ->
-          (scoreLine (take 2 charList ++ [response]))
-      )
+scoreWithResponses :: [[Char]] -> [Char] -> [Int]
+scoreWithResponses =
+  zipWith
+    ( \charList response -> scoreLine (take 2 charList ++ [response])
+    )
 
--- trace ("DEBUG: mod" ++ (take 2 charList ++ [response]))
 findResponse :: [Char] -> Char
 findResponse line =
   let [theirs, _, outcome] = line
