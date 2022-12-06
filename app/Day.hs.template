@@ -1,0 +1,13 @@
+module Day5 where
+
+import Data.Function
+import Data.List
+import Debug.Trace (trace)
+import Text.Regex.Posix ((=~))
+
+run daydata = do
+  let seats = lines daydata
+
+  let part1 = "???"
+  let part2 = "???"
+  [part1, part2]

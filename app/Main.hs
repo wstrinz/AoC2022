@@ -9,6 +9,8 @@ import Day1 (run)
 import Day2 (run)
 import Day3 (run)
 import Day4 (run)
+import Day5 (run)
+import Day6 (run)
 import System.Environment (getArgs)
 
 main :: IO ()
@@ -31,6 +33,10 @@ main =
         print $ Day3.run dayData
       "4" ->
         print $ Day4.run dayData
+      "5" ->
+        print $ Day5.run dayData
+      "6" ->
+        print $ Day6.run dayData
       _ ->
         do
           print "running first 3 days"
